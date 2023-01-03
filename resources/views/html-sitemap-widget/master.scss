@@ -1,0 +1,53 @@
+.w-sitemapWidget {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1210px;
+        padding: 0 20px;
+    }
+
+    &__head {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    &__sublist {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        padding: 0;
+        gap: 5px 20px;
+
+        li {
+            display: block;
+            list-style: none;
+        }
+    }
+}
+
+@media (max-width: 1023px) {
+    .w-sitemapWidget {
+        &__sublist {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        &__container {
+            gap: 10px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .w-sitemapWidget {
+        &__sublist {
+            grid-template-columns: 1fr;
+        }
+    }
+}

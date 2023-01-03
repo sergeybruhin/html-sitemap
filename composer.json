@@ -1,0 +1,55 @@
+{
+    "name": "sergeybruhin/html-sitemap",
+    "description": "Laravel Page Meta Package",
+    "keywords": [
+        "sergeybruhin",
+        "html-sitemap",
+        "laravel"
+    ],
+    "homepage": "https://github.com/sergeybruhin/html-sitemap",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Sergey Bruhin",
+            "email": "sundaycreative@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SergeyBruhin\\HtmlSitemap\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SergeyBruhin\\HtmlSitemap\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SergeyBruhin\\HtmlSitemap\\Providers\\HtmlSitemapServiceProvider"
+            ],
+            "aliases": {
+                "HtmlSitemap": "SergeyBruhin\\HtmlSitemap\\Facades\\HtmlSitemap"
+            }
+        }
+    }
+}
