@@ -73,7 +73,7 @@ Feel free to render sitemap in place you prefer.
 Widget will be rendered if variable **$htmlSitemap** is set.
 
 ## Register route for your Controller
-Not restrictions on url or route name, do there what you want.
+No restrictions on url or route name, do there what you want.
 ```php
 Route::get('sitemap', HtmlSitemapController::class)
     ->middleware('cache.headers:private;max_age=3600;etag')
