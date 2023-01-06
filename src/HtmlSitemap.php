@@ -6,10 +6,12 @@ namespace SergeyBruhin\HtmlSitemap;
 use Illuminate\Support\Collection;
 use JetBrains\PhpStorm\Pure;
 use SergeyBruhin\HtmlSitemap\Dto\HtmlSitemapCategory;
-use SergeyBruhin\HtmlSitemap\Dto\HtmlSitemapLink;
 
 class HtmlSitemap
 {
+    /**
+     * @var Collection<HtmlSitemapCategory>
+     */
     private Collection $categories;
 
     #[Pure] public function __construct()

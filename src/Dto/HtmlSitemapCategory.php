@@ -8,6 +8,9 @@ use JetBrains\PhpStorm\Pure;
 
 class HtmlSitemapCategory
 {
+    /**
+     * @var Collection<HtmlSitemapLink>
+     */
     public Collection $links;
 
     public string $name;
