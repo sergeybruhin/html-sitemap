@@ -79,6 +79,11 @@ Route::get('sitemap', HtmlSitemapController::class)
     ->middleware('cache.headers:private;max_age=3600;etag')
     ->name('html-sitemap');
 ```
+## ToDo
+
+- [ ] Add ability to change package widget template
+
+
 ### Testing (Not yet 💁‍♂️)
 
 ```bash
