@@ -1,4 +1,3 @@
-<h1>Loaded</h1>
 <link rel="stylesheet" href="{{ asset('vendor/html-sitemap/css/html-sitemap.css') }}">
 @php /** @var SergeyBruhin\HtmlSitemap\HtmlSitemap $htmlSitemap */ @endphp
 @if(isset($htmlSitemap) && $htmlSitemap->categories()->count())

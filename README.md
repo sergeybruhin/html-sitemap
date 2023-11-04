@@ -65,6 +65,72 @@ class HtmlSitemapController
 }
 ```
 
+## Or Compose it inside service class like this and pass resulted model to controller
+```php
+<?php
+
+namespace App\Services\Sitemap\Handlers;
+
+use App\Models\Post;
+use SergeyBruhin\HtmlSitemap\Dto\HtmlSitemapCategory;
+use SergeyBruhin\HtmlSitemap\HtmlSitemap;
+
+
+class GenerateHtmlSitemapHandler
+{
+    public function run(): HtmlSitemap
+    {
+        $htmlSitemap = new HtmlSitemap;
+        $htmlSitemap->addCategory($this->getPostsCategory());
+        $htmlSitemap->addCategory($this->getPagesCategory());
+
+
+        return $htmlSitemap;
+    }
+
+    private function getPagesCategory(): HtmlSitemapCategory
+    {
+        $category = new HtmlSitemapCategory('Pages');
+
+        $category->addLink('Resume', route('resume'));
+        $category->addLink('Crypto', route('crypto'));
+        $category->addLink('Dashboard', route('dashboard'));
+        $category->addLink('Privacy Policy', route('privacy-policy'));
+        $category->addLink('Data Deletion Instruction', route('data-deletion-instruction'));
+        $category->addLink('Terms', route('terms'));
+
+        return $category;
+    }
+
+    private function getPostsCategory(): HtmlSitemapCategory
+    {
+        $category = new HtmlSitemapCategory('Blog', route('posts'));
+        Post::each(function (Post $post) use ($category) {
+            $category->addLink($post->title, route('posts.show', $post->slug));
+        });
+        return $category;
+    }
+}
+
+<?php
+
+namespace App\Http\Controllers\Frontend;
+
+use App\Http\Controllers\Controller;
+use App\Services\Sitemap\Interfaces\SitemapServiceContract;
+
+class HtmlSitemapController extends Controller
+{
+    public function __invoke(SitemapServiceContract $sitemapService)
+    {
+        $htmlSitemap = $sitemapService->generateHtmlSitemap();
+        return view('frontend.pages.sitemap.master')
+            ->with('htmlSitemap', $htmlSitemap);
+    }
+}
+
+```
+
 ## Render Sitemap
 Feel free to render sitemap in place you prefer.
 ```php
@@ -82,6 +148,8 @@ Route::get('sitemap', HtmlSitemapController::class)
 ## ToDo
 
 - [ ] Add ability to change package widget template
+- [ ] Add ability to cache sitemap widget
+- [ ] Add ability to show sitemap as a standalone html page
 
 
 ### Testing (Not yet 💁‍♂️)
