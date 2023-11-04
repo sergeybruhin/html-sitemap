@@ -5,12 +5,12 @@ namespace SergeyBruhin\HtmlSitemap\Providers;
 use Illuminate\Support\ServiceProvider;
 use SergeyBruhin\HtmlSitemap\HtmlSitemap;
 
-class HtmlSitemapServiceProvider extends ServiceProvider
+final class HtmlSitemapServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
      */
-    public function boot()
+    public function boot(): void
     {
         /*
          * Optional methods to load your package assets
